@@ -2,6 +2,12 @@ package org.aldebran.calculator;
 
 import java.util.*;
 
+/**
+ * Calculator
+ *
+ * @author Aldebran
+ * @since 2021-04-20
+ */
 public class Calculator {
     enum Signal {
         SIN,
@@ -33,6 +39,12 @@ public class Calculator {
         signalIntegerMap.put(Signal.DIV, 3);
     }
 
+    /**
+     * justify whether the signal is a function
+     *
+     * @param signal
+     * @return
+     */
     public static boolean isFunc(Signal signal) {
         if (signal == Signal.SIN ||
                 signal == Signal.COS ||
@@ -51,7 +63,12 @@ public class Calculator {
         }
     }
 
-
+    /**
+     * preprocess to numbers and operators
+     *
+     * @param str
+     * @return
+     */
     public static List preprocess(String str) {
         str = str.toUpperCase();
         str = str.replaceAll("\\s+", "");
@@ -101,7 +118,12 @@ public class Calculator {
         return list;
     }
 
-
+    /**
+     * midPredix->postPrefix
+     *
+     * @param str
+     * @return
+     */
     public static List postPrefix(String str) {
         List list = preprocess(str);
         List result = new ArrayList();
@@ -152,7 +174,12 @@ public class Calculator {
 
     }
 
-
+    /**
+     * calc the value of the formula
+     *
+     * @param str
+     * @return
+     */
     public static double calc(String str) {
         List postPrefix = postPrefix(str);
         Stack<Double> stack = new Stack<>();
