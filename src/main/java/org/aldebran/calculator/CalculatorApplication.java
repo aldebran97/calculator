@@ -1,4 +1,4 @@
-
+package org.aldebran.calculator;
 
 public class CalculatorApplication {
 

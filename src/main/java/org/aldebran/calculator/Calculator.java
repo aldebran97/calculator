@@ -1,3 +1,5 @@
+package org.aldebran.calculator;
+
 import java.util.*;
 
 public class Calculator {
@@ -11,7 +13,7 @@ public class Calculator {
         LOG,
         LN,
         LG,
-        XY,
+        POW,
         EX,
         LEFT,
         RIGHT,
@@ -38,7 +40,7 @@ public class Calculator {
                 signal == Signal.ARC_SIN ||
                 signal == Signal.ARC_COS ||
                 signal == Signal.ARC_TAN ||
-                signal == Signal.XY ||
+                signal == Signal.POW ||
                 signal == Signal.LOG ||
                 signal == Signal.EX ||
                 signal == Signal.LN ||
@@ -205,7 +207,7 @@ public class Calculator {
                     Double v1 = stack.pop();
                     stack.push(Math.atan(v1));
                 }
-                case XY -> {
+                case POW -> {
                     Double v2 = stack.pop();
                     Double v1 = stack.pop();
                     stack.push(Math.pow(v1, v2));
@@ -222,6 +224,10 @@ public class Calculator {
                 case LN -> {
                     Double v1 = stack.pop();
                     stack.push(Math.log(Math.log(v1)));
+                }
+                case LG -> {
+                    Double v1 = stack.pop();
+                    stack.push(Math.log(Math.log10(v1)));
                 }
                 default -> throw new RuntimeException("illegal Signal! " + signal);
             }
